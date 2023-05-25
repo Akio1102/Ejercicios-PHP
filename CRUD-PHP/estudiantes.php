@@ -72,6 +72,7 @@ $all = $data -> getAll();
             <!-- ///////Llenado DInamico desde la Base de Datos -->
             <?php
               foreach($all as $key => $val){
+                print_r($val);
             ?> 
               <tr>
                 <td> <?= $val["id"] ?> </td>
@@ -80,7 +81,7 @@ $all = $data -> getAll();
                 <td> <?= $val["logros"] ?> </td>
                 <td> <?= $val["ser"] ?> </td>
                 <td> <?= $val["ingles"] ?> </td>
-                <td> <?= $val["skills"] ?> </td>
+                <td> <?= $val["skill"] ?> </td>
                 <td> <?= $val["asistencia"] ?> </td>
                 <td> <?= $val["especialidad"] ?> </td>
                 <td>
@@ -88,7 +89,7 @@ $all = $data -> getAll();
                   <i class="bi bi-trash3"></i>Borrar</a>
                 </td>
                 <td>
-                  <a class="btn btn-outline-warning" href="borrarEstudiantes.php?id=<?=$val['id']?>&req=editar">
+                  <a class="btn btn-outline-warning" href="actualizarEstudiantes.php?id=<?=$val['id']?>">
                   <i class="bi bi-pencil-square"></i>Editar</a>
                 </td>
               </tr>
@@ -165,12 +166,11 @@ $all = $data -> getAll();
                 />
               </div>
 
-              <div class="mb-1 col-12">
+             <div class="mb-1 col-12">
                 <label for="ingles" class="form-label">Ingles</label>
                 <select class="form-select" aria-label="Default select example" id="ingles"
                   name="ingles" required>
                   <option selected>Selecione Nivel de Ingles</option>
-                  <option value="A0">A0</option>
                   <option value="A1">A1</option>
                   <option value="A2">A2</option>
                   <option value="B1">B1</option>
@@ -180,12 +180,12 @@ $all = $data -> getAll();
                 </select>
               </div>
 
-              <div class="mb-1 col-12">
-                <label for="skills" class="form-label">Skills</label>
+                            <div class="mb-1 col-12">
+                <label for="skill" class="form-label">Skills</label>
                 <input 
                   type="text"
-                  id="skills"
-                  name="skills"
+                  id="skill"
+                  name="skill"
                   class="form-control"
                   required  
                 />
