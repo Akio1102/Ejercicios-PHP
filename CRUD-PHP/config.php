@@ -1,9 +1,9 @@
 <?php
-ini_set("display_errors", 1);
+// ini_set("display_errors", 1);
 
-ini_set("display_startup_errors", 1);
+// ini_set("display_startup_errors", 1);
 
-error_reporting(E_ALL);
+// error_reporting(E_ALL);
 
 require_once("db.php");
 
@@ -110,8 +110,8 @@ class Config{
 
     public function insertData(){
         try {
-            $stm = $this-> dbCnx -> prepare("INSERT INTO camper(nombres,direccion,logros,ser,ingles,skill,asistencia,especialidad) 
-            VALUES (:nomb,:dire,:logo,:se,:ing,:ski,:asis,:espe)");
+          $stm = $this-> dbCnx -> prepare("INSERT INTO camper(nombres,direccion,logros,ser,ingles,skill,asistencia,especialidad) 
+          VALUES (:nomb,:dire,:logo,:se,:ing,:ski,:asis,:espe)");
             $stm->bindParam(":nomb",$this->nombres);
             $stm->bindParam(":dire",$this->direccion);
             $stm->bindParam(":logo",$this->logros);
@@ -138,8 +138,9 @@ class Config{
     
     public function delete(){
       try {
-        $stm = $this-> dbCnx -> prepare("DELETE FROM camper WHERE id= ?");
-        $stm -> execute([$this->id]);
+        $stm = $this-> dbCnx -> prepare("DELETE FROM camper WHERE id= :id");
+        $stm->bindParam(":id",$this->id);
+        $stm -> execute();
         return $stm -> fetchAll();
       } catch (Exception $e) {
         return $e->getMessages();
@@ -148,8 +149,28 @@ class Config{
     
     public function selectOne(){
       try {
-        $stm = $this-> dbCnx -> prepare("SELECT * FROM camper WHERE id= ?");
-        $stm -> execute([$this->id]);
+        $stm = $this-> dbCnx -> prepare("SELECT * FROM camper WHERE id= :id");
+        $stm->bindParam(":id",$this->id);
+        $stm -> execute();
+        return $stm -> fetchAll();
+      } catch (Exception $e) {
+        return $e->getMessages();
+      }
+    }
+
+    public function update(){
+      try {
+        $stm = $this-> dbCnx -> prepare("UPDATE camper SET nombres = :nomb , direccion = :dire , logros = :logo , ser = :se , ingles = :ing , skill = :ski , asistencia = :asis , especialidad = :espe WHERE id = :id");
+          $stm->bindParam(":id",$this->id);
+          $stm->bindParam(":nomb",$this->nombres);
+          $stm->bindParam(":dire",$this->direccion);
+          $stm->bindParam(":logo",$this->logros);
+          $stm->bindParam(":se",$this->ser);
+          $stm->bindParam(":ing",$this->ingles);
+          $stm->bindParam(":ski",$this->skill);
+          $stm->bindParam(":asis",$this->asistencia);
+          $stm->bindParam(":espe",$this->especialidad);
+        $stm -> execute();
         return $stm -> fetchAll();
       } catch (Exception $e) {
         return $e->getMessages();

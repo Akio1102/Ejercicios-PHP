@@ -6,6 +6,24 @@ $data->setId($id);
 
 $record = $data->selectOne();
 $val = $record[0];
+
+if (isset($_POST["editar"])) {
+  $data->setNombres($_POST["nombres"]);
+  $data->setDireccion($_POST["direccion"]);
+  $data->setLogros($_POST["logros"]);
+  $data->setSer($_POST["ser"]);
+  $data->setIngles($_POST["ingles"]);
+  $data->setSkill($_POST["skill"]);
+  $data->setAsistencia($_POST["asistencia"]);
+  $data->setEspecialidad($_POST["especialidad"]);
+
+  $data->update();
+   echo "
+    <script> alert('Los Datos fueron Actualizados exitosamente');
+    document.location='estudiantes.php'
+    </script>"; 
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,7 +78,7 @@ $val = $record[0];
                   id="nombres"
                   name="nombres"
                   class="form-control"  
-                 
+                  value="<?= $val["nombres"]?>"
                 />
               </div>
 
@@ -71,7 +89,7 @@ $val = $record[0];
                   id="direccion"
                   name="direccion"
                   class="form-control"  
-                  
+                  value="<?= $val["direccion"]?>"
                  
                 />
               </div>
@@ -83,8 +101,62 @@ $val = $record[0];
                   id="logros"
                   name="logros"
                   class="form-control"  
-                  
-                  
+                  value="<?= $val["logros"]?>"
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="ser" class="form-label">Ser</label>
+                <input 
+                  type="text"
+                  id="ser"
+                  name="ser"
+                  class="form-control"  
+                  value="<?= $val["ser"]?>"
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="ingles" class="form-label">Ingles</label>
+                <input 
+                  type="text"
+                  id="ingles"
+                  name="ingles"
+                  class="form-control"  
+                  value="<?= $val["ingles"]?>"
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="skill" class="form-label">Skill</label>
+                <input 
+                  type="text"
+                  id="skill"
+                  name="skill"
+                  class="form-control"  
+                  value="<?= $val["skill"]?>"
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="asistencia" class="form-label">Asistencia</label>
+                <input 
+                  type="text"
+                  id="asistencia"
+                  name="asistencia"
+                  class="form-control"  
+                  value="<?= $val["asistencia"]?>"
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="especialidad" class="form-label">Especialidad</label>
+                <input 
+                  type="text"
+                  id="especialidad"
+                  name="especialidad"
+                  class="form-control"  
+                  value="<?= $val["especialidad"]?>"
                 />
               </div>
 

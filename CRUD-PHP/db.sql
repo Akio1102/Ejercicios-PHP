@@ -14,3 +14,13 @@ CREATE TABLE camper(
 );
 
 DROP TABLE camper;
+
+CREATE DATABASE facturacion;
+
+CREATE TABLE categorias(
+    categoriaID INT NOT NULL AUTO_INCREMENT,
+    categoriaNombres VARCHAR(255) NOT NULL,
+    descripcion VARCHAR(255) NOT NULL,
+    imagen VARCHAR(255) NOT NULL,  
+    PRIMARY KEY(categoriaID)
+);

@@ -72,7 +72,6 @@ $all = $data -> getAll();
             <!-- ///////Llenado DInamico desde la Base de Datos -->
             <?php
               foreach($all as $key => $val){
-                print_r($val);
             ?> 
               <tr>
                 <td> <?= $val["id"] ?> </td>
