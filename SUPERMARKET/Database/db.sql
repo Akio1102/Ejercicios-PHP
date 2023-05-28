@@ -2,7 +2,7 @@ CREATE DATABASE Supermarket;
 
 USE Supermarket;
 
-CREATE TABLE Categorias(
+CREATE TABLE categorias(
     categoriasId INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     descripcion VARCHAR(255) NOT NULL,
@@ -10,14 +10,14 @@ CREATE TABLE Categorias(
     PRIMARY KEY(categoriasId)
 );
 
-CREATE TABLE Clientes(
+CREATE TABLE clientes(
     clienteId INT NOT NULL AUTO_INCREMENT,
     celular INT NOT NULL,
     compania VARCHAR(255) NOT NULL,
     PRIMARY KEY(clienteId)
 );
 
-CREATE TABLE Empleados(
+CREATE TABLE empleados(
     empleadoId INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(255) NOT NULL,
     celular INT NOT NULL,
@@ -26,17 +26,17 @@ CREATE TABLE Empleados(
     PRIMARY KEY(empleadoId)
 );
 
-CREATE TABLE Facturas(
+CREATE TABLE facturas(
     facturaId INT NOT NULL AUTO_INCREMENT,
     empleadoId INT,
     clienteId INT,
     fecha DATE,
     PRIMARY KEY(facturaId),
-    FOREIGN KEY (empleadoId) REFERENCES Empleados(empleadoId),
-    FOREIGN KEY (clienteId) REFERENCES Clientes(clienteId)
+    FOREIGN KEY (empleadoId) REFERENCES empleados(empleadoId),
+    FOREIGN KEY (clienteId) REFERENCES clientes(clienteId)
 );
 
-CREATE TABLE Proveedores(
+CREATE TABLE proveedores(
     proveedorId INT NOT NULL AUTO_INCREMENT,
     nombre VARCHAR(10) NOT NULL,
     telefono INT NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE Proveedores(
     PRIMARY KEY(proveedorId)
 );
 
-CREATE TABLE Productos(
+CREATE TABLE productos(
     productoId INT NOT NULL AUTO_INCREMENT,
     categoriasId INT,
     precioUnitario INT NOT NULL,
@@ -54,15 +54,15 @@ CREATE TABLE Productos(
     nombreProducto VARCHAR(10) NOT NULL,
     descontinuado BOOLEAN,
     PRIMARY KEY(productoId),
-    FOREIGN KEY (categoriasId) REFERENCES Categorias(categoriasId),
-    FOREIGN KEY (proveedorId) REFERENCES Proveedores(proveedorId)
+    FOREIGN KEY (categoriasId) REFERENCES categorias(categoriasId),
+    FOREIGN KEY (proveedorId) REFERENCES proveedores(proveedorId)
 );
 
-CREATE TABLE FacturaDetalle(
+CREATE TABLE facturaDetalle(
     facturaId INT,
     productoId INT,
     cantidadId INT NOT NULL,
     precioVenta INT NOT NULL,
-    FOREIGN KEY (facturaId) REFERENCES Facturas(facturaId),
-    FOREIGN KEY (productoId) REFERENCES Productos(productoId)
+    FOREIGN KEY (facturaId) REFERENCES facturas(facturaId),
+    FOREIGN KEY (productoId) REFERENCES productos(productoId)
 );
