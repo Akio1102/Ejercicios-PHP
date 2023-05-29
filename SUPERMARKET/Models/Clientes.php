@@ -1,6 +1,6 @@
 <?php
 
-require_once("./Pdo.php");
+require_once("Pdo.php");
 
 class Clientes extends ConexiónPdo{
     
@@ -8,7 +8,7 @@ class Clientes extends ConexiónPdo{
     private $celular;
     private $compania;
 
-    public function __construct($clienteId= 0, $celular= "", $compania=""){
+    public function __construct($clienteId= 0, $celular= 0, $compania=""){
         $this->clienteId = $clienteId;
         $this->celular = $celular;
         $this->compania = $compania;

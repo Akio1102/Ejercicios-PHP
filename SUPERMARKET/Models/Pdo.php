@@ -1,6 +1,6 @@
 <?php
 
-require_once("../Database/Db.php");
+require_once(__DIR__ . '/../Database/Db.php');
 
 class ConexiónPdo{
     protected $dbCnx;

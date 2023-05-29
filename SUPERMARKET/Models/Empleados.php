@@ -1,6 +1,6 @@
 <?php
 
-require_once("./Pdo.php");
+require_once("Pdo.php");
 
 class Empleados extends ConexiónPdo{
     
@@ -109,12 +109,13 @@ class Empleados extends ConexiónPdo{
 
     public function update(){
         try {
-            $stm = $this-> dbCnx -> prepare("UPDATE empleados SET nombre=:nomb , celular=:descr , direccion=:img
+            $stm = $this-> dbCnx -> prepare("UPDATE empleados SET nombre=:nomb , celular=:descr , direccion=:dire , imagen=:img
             WHERE empleadoId = :id");
             $stm->bindParam(":id",$this->empleadoId);
             $stm->bindParam(":nomb",$this->nombre);
             $stm->bindParam(":descr",$this->celular);
-            $stm->bindParam(":img",$this->direccion);
+            $stm->bindParam(":dire",$this->direccion);
+            $stm->bindParam(":img",$this->imagen);
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {

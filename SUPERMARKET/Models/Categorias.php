@@ -1,6 +1,6 @@
 <?php
 
-require_once("./Pdo.php");
+require_once("Pdo.php");
 
 class Categorias extends ConexiónPdo{
     
