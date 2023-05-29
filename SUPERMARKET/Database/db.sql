@@ -12,6 +12,7 @@ CREATE TABLE categorias(
 
 CREATE TABLE clientes(
     clienteId INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(255) NOT NULL,
     celular INT NOT NULL,
     compania VARCHAR(255) NOT NULL,
     PRIMARY KEY(clienteId)

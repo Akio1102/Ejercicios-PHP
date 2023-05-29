@@ -5,11 +5,13 @@ require_once("Pdo.php");
 class Clientes extends ConexiónPdo{
     
     private $clienteId;
+    private $nombre;
     private $celular;
     private $compania;
 
-    public function __construct($clienteId= 0, $celular= 0, $compania=""){
+    public function __construct($clienteId= 0, $nombre="",$celular= 0, $compania=""){
         $this->clienteId = $clienteId;
+        $this->nombre = $nombre;
         $this->celular = $celular;
         $this->compania = $compania;
         parent::__construct();
@@ -18,6 +20,10 @@ class Clientes extends ConexiónPdo{
     //Getters
     public function getClienteId(){
         return $this->clienteId;
+    }
+
+    public function getNombre(){
+        return $this->nombre;
     }
 
     public function getCelular(){
@@ -33,6 +39,10 @@ class Clientes extends ConexiónPdo{
         $this->clienteId =$clienteId;
     }
 
+    public function setNombre($nombre){
+        $this->nombre =$nombre;
+    }
+
     public function setCelular($celular){
         $this->celular =$celular;
     }
@@ -43,8 +53,9 @@ class Clientes extends ConexiónPdo{
 
     public function insertData(){
         try {
-            $stm = $this-> dbCnx -> prepare("INSERT INTO clientes(celular,compania) 
-            VALUES (:cel,:comp)");
+            $stm = $this-> dbCnx -> prepare("INSERT INTO clientes(nombre,celular,compania) 
+            VALUES (:nom,:cel,:comp)");
+            $stm->bindParam(":nom",$this->nombre);
             $stm->bindParam(":cel",$this->celular);
             $stm->bindParam(":comp",$this->compania);
             $stm->execute();
@@ -87,9 +98,10 @@ class Clientes extends ConexiónPdo{
 
     public function update(){
         try {
-            $stm = $this-> dbCnx -> prepare("UPDATE clientes SET celular=:cel , compania=:comp 
+            $stm = $this-> dbCnx -> prepare("UPDATE clientes SET nombre=:nom ,celular=:cel , compania=:comp 
             WHERE clienteId = :id");
             $stm->bindParam(":id",$this->clienteId);
+            $stm->bindParam(":nom",$this->nombre);
             $stm->bindParam(":cel",$this->celular);
             $stm->bindParam(":comp",$this->compania);
             $stm -> execute();

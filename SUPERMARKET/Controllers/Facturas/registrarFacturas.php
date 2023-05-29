@@ -1,18 +1,19 @@
 <?php
 if(isset($_POST["guardar"])){
-    require_once("../../Models/Proveedores.php");
+    require_once("../../Models/Facturas.php");
 
-    $config = new Proveedores();
+    $config = new Facturas();
 
-    $config->setNombre($_POST["nombre"]);
-    $config->setTelefono($_POST["telefono"]);
-    $config->setCiudad($_POST["ciudad"]);
+    $config->setFacturaId($_POST["facturaId"]);
+    $config->setEmpleadoId($_POST["empleadoId"]);
+    $config->setClienteId($_POST["clienteId"]);
+    $config->setFecha($_POST["fecha"]);
     
     $config->insertData();
 
     echo "
     <script> alert('Los datos fueron guardados exitosamente');
-    document.location='../../Templates/Proveedores.php'
+    document.location='../../Templates/Facturas.php'
     </script>"; 
 }
 ?>

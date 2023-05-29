@@ -54,7 +54,29 @@ class Facturas extends ConexiónPdo{
 
     public function obtenerEmpleadoId(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT empleadoId FROM empleados");
+            $stm = $this-> dbCnx -> prepare("SELECT empleadoId,nombre FROM empleados");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessages();
+        }
+    }
+
+    public function EmpleadoId(){
+        try {
+            $stm = $this-> dbCnx -> prepare("SELECT empleadoId,nombre FROM empleados WHERE empleadoId=:empleadoId");
+            $stm->bindParam(":empleadoId",$this->empleadoId);
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessages();
+        }
+    }
+
+    public function ClienteId(){
+        try {
+            $stm = $this-> dbCnx -> prepare("SELECT clienteId,nombre FROM empleados WHERE empleadoId=:empleadoId");
+            $stm->bindParam(":empleadoId",$this->empleadoId);
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
@@ -64,7 +86,7 @@ class Facturas extends ConexiónPdo{
 
     public function obtenerClienteId(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT clienteId FROM clientes");
+            $stm = $this-> dbCnx -> prepare("SELECT clienteId,nombre FROM clientes");
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {

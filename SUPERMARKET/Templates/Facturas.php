@@ -3,6 +3,8 @@ require_once("../Models/Facturas.php");
 $data = new Facturas();
 $all = $data -> getAll();
 $idempleado = $data->obtenerEmpleadoId();
+$idcliente = $data->obtenerClienteId();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -96,7 +98,7 @@ $idempleado = $data->obtenerEmpleadoId();
                   <i class="bi bi-trash3"></i>Borrar</a>
                 </td>
                 <td>
-                  <a class="btn btn-outline-warning" href="../Controllers/Facturas/actualizarFacturas.php?facturaId=<?=$val['facturaId']?>">
+                  <a class="btn btn-outline-warning" href="../Controllers/Facturas/actualizarFacturas.php?facturaId=<?=$val['facturaId']?>&empleadoId=<?=$val['empleadoId']?>">
                   <i class="bi bi-pencil-square"></i>Editar</a>
                 </td>
               </tr>
@@ -132,7 +134,7 @@ $idempleado = $data->obtenerEmpleadoId();
                   <?php
                     foreach($idempleado as $key => $valor){
                     ?> 
-                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["empleadoId"]?></option>
+                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["nombre"]?></option>
                   <?php
                     }
                   ?>
@@ -141,13 +143,16 @@ $idempleado = $data->obtenerEmpleadoId();
 
               <div class="mb-1 col-12">
                 <label for="clienteId" class="form-label">Cliente Id</label>
-                <input 
-                  type="text"
-                  id="clienteId"
-                  name="clienteId"
-                  class="form-control"
-                  required  
-                />
+                <select class="form-select" aria-label="Default select example" id="clienteId" name="clienteId" required>
+                  <option selected>Seleccione el id del Cliente</option>
+                  <?php
+                    foreach($idcliente as $key => $valor){
+                    ?> 
+                  <option value="<?= $valor["clienteId"]?>"><?= $valor["nombre"]?></option>
+                  <?php
+                    }
+                  ?>
+                </select>
               </div>
 
               <div class="mb-1 col-12">
