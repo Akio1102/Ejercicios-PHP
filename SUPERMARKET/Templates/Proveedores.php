@@ -31,7 +31,7 @@ $all = $data -> getAll();
         <h3>Cristian Diaz</h3>
       </div>
       <div class="menus">
-        <a href="./categorias.php" style="display: flex;gap:1px;">
+      <a href="./Categorias.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
           <h3>Categorias</h3>
         </a>
@@ -43,9 +43,21 @@ $all = $data -> getAll();
           <i class="bi bi-people"></i>
           <h3>Empleados</h3>
         </a>
+        <a href="./Facturas.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3>Facturas</h3>
+        </a>
         <a href="./Proveedores.php" style="display: flex;gap:1px;">
           <i class="bi bi-people"></i>
           <h3>Proovedores</h3>
+        </a>
+        <a href="./Productos.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3>Productos</h3>
+        </a>
+        <a href="./FacturaDetalle.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3>Factura Detalle</h3>
         </a>
       </div>
     </div>

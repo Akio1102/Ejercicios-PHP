@@ -51,6 +51,27 @@ class Facturas extends ConexiónPdo{
         $this->fecha =$fecha;
     }
 
+
+    public function obtenerEmpleadoId(){
+        try {
+            $stm = $this-> dbCnx -> prepare("SELECT empleadoId FROM empleados");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessages();
+        }
+    }
+
+    public function obtenerClienteId(){
+        try {
+            $stm = $this-> dbCnx -> prepare("SELECT clienteId FROM clientes");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessages();
+        }
+    }
+
     public function insertData(){
         try {
             $stm = $this-> dbCnx -> prepare("INSERT INTO facturas(empleadoId,clienteId,fecha) 

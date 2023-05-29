@@ -58,6 +58,26 @@ if (isset($_POST["editar"])) {
           <i class="bi bi-people"></i>
           <h3>Clientes</h3>
         </a>
+        <a href="../../Templates/Empleados.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3>Empleados</h3>
+        </a>
+        <a href="../../Templates/Facturas.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3>Facturas</h3>
+        </a>
+        <a href="../../Templates/Proveedores.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3>Proveedores</h3>
+        </a>
+        <a href="../../Templates/Productos.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3>Productos</h3>
+        </a>
+        <a href="../../Templates/FacturaDetalle.php" style="display: flex;gap:1px;">
+          <i class="bi bi-people"></i>
+          <h3>Factura Detalle</h3>
+        </a>
       </div>
     </div>
 
