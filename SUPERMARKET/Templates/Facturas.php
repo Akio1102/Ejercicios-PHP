@@ -98,7 +98,7 @@ $idcliente = $data->obtenerClienteId();
                   <i class="bi bi-trash3"></i>Borrar</a>
                 </td>
                 <td>
-                  <a class="btn btn-outline-warning" href="../Controllers/Facturas/actualizarFacturas.php?facturaId=<?=$val['facturaId']?>&empleadoId=<?=$val['empleadoId']?>">
+                  <a class="btn btn-outline-warning" href="../Controllers/Facturas/actualizarFacturas.php?facturaId=<?=$val['facturaId']?>&empleadoId=<?=$val['empleadoId']?>&clienteId=<?=$val['clienteId']?>">
                   <i class="bi bi-pencil-square"></i>Editar</a>
                 </td>
               </tr>

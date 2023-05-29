@@ -1,6 +1,6 @@
 <?php
-require_once("../Models/Facturas.php");
-$data = new Facturas();
+require_once("../Models/Productos.php");
+$data = new Productos();
 $all = $data -> getAll();
 ?>
 <!DOCTYPE html>

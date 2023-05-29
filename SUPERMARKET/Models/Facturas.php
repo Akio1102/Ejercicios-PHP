@@ -75,8 +75,8 @@ class Facturas extends ConexiónPdo{
 
     public function ClienteId(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT clienteId,nombre FROM empleados WHERE empleadoId=:empleadoId");
-            $stm->bindParam(":empleadoId",$this->empleadoId);
+            $stm = $this-> dbCnx -> prepare("SELECT clienteId,nombre FROM clientes WHERE clienteId=:clienteId");
+            $stm->bindParam(":clienteId",$this->clienteId);
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {

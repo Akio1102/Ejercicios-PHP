@@ -3,10 +3,15 @@ require_once("../../Models/Facturas.php");
 $data = new Facturas();
 $idFactura = $_GET["facturaId"];
 $idEmpleado = $_GET["empleadoId"];
+$idCliente= $_GET["clienteId"]; 
+
 $data->setFacturaId($idFactura);
 $data->setEmpleadoId($idEmpleado);
+$data->setClienteId($clienteId);
+
 
 $empleado = $data->EmpleadoId();
+$cliente = $data->ClienteId();
 
 $idempleados = $data->obtenerEmpleadoId();
 $idclientes = $data->obtenerClienteId();
@@ -119,7 +124,13 @@ if (isset($_POST["editar"])) {
               <div class="mb-1 col-12">
                 <label for="clienteId" class="form-label">Cliente Id</label>
                 <select class="form-select" aria-label="Default select example" id="clienteId" name="clienteId" required>
-                  <option selected>Seleccione el id del Cliente</option>
+                  <?php
+                    foreach($idCliente as $key => $valor){
+                    ?> 
+                  <option selected value="<?= $cliente["clienteId"]?>"><?= $cliente["nombre"]?></option>
+                  <?php
+                    }
+                  ?>
                   <?php
                     foreach($idclientes as $key => $valor){
                     ?> 
@@ -133,7 +144,7 @@ if (isset($_POST["editar"])) {
               <div class="mb-1 col-12">
                 <label for="fecha" class="form-label">Fecha</label>
                 <input 
-                  type="text"
+                  type="date"
                   id="fecha"
                   name="fecha"
                   class="form-control"  
