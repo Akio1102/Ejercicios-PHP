@@ -109,7 +109,7 @@ class Facturas extends ConexiónPdo{
 
     public function getAll(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT * FROM facturas");
+            $stm = $this-> dbCnx -> prepare("SELECT * FROM facturas INNER JOIN empleados ON facturas.empleadoId = empleados.empleadoId INNER JOIN clientes ON facturas.clienteId = clientes.clienteId;");
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
