@@ -67,7 +67,7 @@ $idcliente = $data->obtenerClienteId();
 
     <div class="parte-media">
       <div style="display: flex; justify-content: space-between;">
-        <h2>Empleados</h2>
+        <h2>Facturas</h2>
         <button class="btn-m" data-bs-toggle="modal" data-bs-target="#registrarEstudiantes"><i class="bi bi-person-add " style="color: rgb(255, 255, 255);" ></i></button>
       </div>
       <div class="menuTabla contenedor2">
@@ -90,8 +90,8 @@ $idcliente = $data->obtenerClienteId();
             ?> 
               <tr>
                 <td> <?= $val["facturaId"] ?> </td>
-                <td> <?= $val["empleadoId"] ?> </td>
-                <td> <?= $val["clienteId"] ?> </td>
+                <td> <?= $val["empleado_nombre"] ?> </td>
+                <td> <?= $val["clientes_nombre"] ?> </td>
                 <td> <?= $val["fecha"] ?> </td>
                 <td>
                   <a class="btn btn-outline-danger" href="../Controllers/Facturas/borrarFacturas.php?facturaId=<?=$val['facturaId']?>&req=delete">
@@ -134,7 +134,7 @@ $idcliente = $data->obtenerClienteId();
                   <?php
                     foreach($idempleado as $key => $valor){
                     ?> 
-                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["nombre"]?></option>
+                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["empleado_nombre"]?></option>
                   <?php
                     }
                   ?>
@@ -148,7 +148,7 @@ $idcliente = $data->obtenerClienteId();
                   <?php
                     foreach($idcliente as $key => $valor){
                     ?> 
-                  <option value="<?= $valor["clienteId"]?>"><?= $valor["nombre"]?></option>
+                  <option value="<?= $valor["clienteId"]?>"><?= $valor["clientes_nombre"]?></option>
                   <?php
                     }
                   ?>

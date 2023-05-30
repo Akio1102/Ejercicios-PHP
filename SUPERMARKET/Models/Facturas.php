@@ -54,7 +54,7 @@ class Facturas extends ConexiónPdo{
 
     public function obtenerEmpleadoId(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT empleadoId,nombre FROM empleados");
+            $stm = $this-> dbCnx -> prepare("SELECT empleadoId,empleado_nombre FROM empleados");
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
@@ -64,7 +64,7 @@ class Facturas extends ConexiónPdo{
 
     public function EmpleadoId(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT empleadoId,nombre FROM empleados WHERE empleadoId=:empleadoId");
+            $stm = $this-> dbCnx -> prepare("SELECT empleadoId,empleado_nombre FROM empleados WHERE empleadoId=:empleadoId");
             $stm->bindParam(":empleadoId",$this->empleadoId);
             $stm -> execute();
             return $stm -> fetchAll();
@@ -75,7 +75,7 @@ class Facturas extends ConexiónPdo{
 
     public function ClienteId(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT clienteId,nombre FROM clientes WHERE clienteId=:clienteId");
+            $stm = $this-> dbCnx -> prepare("SELECT clienteId,clientes_nombre FROM clientes WHERE clienteId=:clienteId");
             $stm->bindParam(":clienteId",$this->clienteId);
             $stm -> execute();
             return $stm -> fetchAll();
@@ -86,7 +86,7 @@ class Facturas extends ConexiónPdo{
 
     public function obtenerClienteId(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT clienteId,nombre FROM clientes");
+            $stm = $this-> dbCnx -> prepare("SELECT clienteId,clientes_nombre FROM clientes");
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
@@ -109,7 +109,7 @@ class Facturas extends ConexiónPdo{
 
     public function getAll(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT * FROM facturas INNER JOIN empleados ON facturas.empleadoId = empleados.empleadoId INNER JOIN clientes ON facturas.clienteId = clientes.clienteId;");
+            $stm = $this-> dbCnx -> prepare("SELECT * FROM facturas INNER JOIN empleados ON facturas.empleadoId = empleados.empleadoId INNER JOIN clientes ON facturas.clienteId = clientes.clienteId");
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {

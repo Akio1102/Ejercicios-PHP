@@ -88,7 +88,7 @@ $all = $data -> getAll();
             ?> 
               <tr>
                 <td> <?= $val["empleadoId"] ?> </td>
-                <td> <?= $val["nombre"] ?> </td>
+                <td> <?= $val["empleado_nombre"] ?> </td>
                 <td> <?= $val["celular"] ?> </td>
                 <td> <?= $val["direccion"] ?> </td>
                 <td> <?= $val["imagen"] ?> </td>
@@ -131,11 +131,11 @@ $all = $data -> getAll();
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
             <form class="col d-flex flex-wrap" action="../Controllers/Empleados/registrarEmpleados.php" method="post">
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="empleado_nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="empleado_nombre"
+                  name="empleado_nombre"
                   class="form-control"
                   required  
                 />

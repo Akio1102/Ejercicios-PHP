@@ -8,7 +8,7 @@ $record = $data->selectOne();
 $val = $record[0];
 
 if (isset($_POST["editar"])) {
-  $data->setNombre($_POST["nombre"]);
+  $data->setClientes_nombre($_POST["clientes_nombre"]);
   $data->setCelular($_POST["celular"]);
   $data->setCompania($_POST["compania"]);
 
@@ -88,11 +88,12 @@ if (isset($_POST["editar"])) {
       <form class="col d-flex flex-wrap" action=""  method="post">
 
                <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="clientes_nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="clientes_nombre"
+                  name="clientes_nombre"
+                  value="<?= $val["clientes_nombre"]?>"
                   class="form-control"
                   required  
                 />

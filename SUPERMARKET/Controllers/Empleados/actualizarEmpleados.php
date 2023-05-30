@@ -9,7 +9,7 @@ $val = $record[0];
 
 if (isset($_POST["editar"])) {
 
-  $data->setNombre($_POST["nombre"]);
+  $data->setEmpleado_nombre($_POST["empleado_nombre"]);
   $data->setCelular($_POST["celular"]);
   $data->setDireccion($_POST["direccion"]);
   $data->setImagen($_POST["imagen"]);
@@ -89,13 +89,13 @@ if (isset($_POST["editar"])) {
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action=""  method="post">
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="empleado_nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="empleado_nombre"
+                  name="empleado_nombre"
                   class="form-control"  
-                  value="<?= $val["nombre"]?>"
+                  value="<?= $val["empleado_nombre"]?>"
                 />
               </div>
 

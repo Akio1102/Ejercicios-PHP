@@ -5,14 +5,14 @@ require_once("Pdo.php");
 class Empleados extends ConexiónPdo{
     
     private $empleadoId;
-    private $nombre;
+    private $empleado_nombre;
     private $celular;
     private $direccion;
     private $imagen;
 
-    public function __construct($empleadoId= 0, $nombre= "", $celular=0, $direccion="",$imagen=""){
+    public function __construct($empleadoId= 0, $empleado_nombre= "", $celular=0, $direccion="",$imagen=""){
         $this->empleadoId = $empleadoId;
-        $this->nombre = $nombre;
+        $this->empleado_nombre = $empleado_nombre;
         $this->celular = $celular;
         $this->direccion = $direccion;
         $this->imagen = $imagen;
@@ -24,8 +24,8 @@ class Empleados extends ConexiónPdo{
         return $this->empleadoId;
     }
 
-    public function getNombre(){
-        return $this->nombre;
+    public function getEmpleado_nombre(){
+        return $this->empleado_nombre;
     }
 
     public function getCelular(){
@@ -45,8 +45,8 @@ class Empleados extends ConexiónPdo{
         $this->empleadoId =$empleadoId;
     }
 
-    public function setNombre($nombre){
-        $this->nombre =$nombre;
+    public function setEmpleado_nombre($empleado_nombre){
+        $this->empleado_nombre =$empleado_nombre;
     }
 
     public function setCelular($celular){
@@ -63,9 +63,9 @@ class Empleados extends ConexiónPdo{
 
     public function insertData(){
         try {
-            $stm = $this-> dbCnx -> prepare("INSERT INTO empleados(nombre,celular,direccion,imagen) 
+            $stm = $this-> dbCnx -> prepare("INSERT INTO empleados(empleado_nombre,celular,direccion,imagen) 
             VALUES (:nomb,:cel,:dire,:img)");
-            $stm->bindParam(":nomb",$this->nombre);
+            $stm->bindParam(":nomb",$this->empleado_nombre);
             $stm->bindParam(":cel",$this->celular);
             $stm->bindParam(":dire",$this->direccion);
             $stm->bindParam(":img",$this->imagen);
@@ -109,10 +109,10 @@ class Empleados extends ConexiónPdo{
 
     public function update(){
         try {
-            $stm = $this-> dbCnx -> prepare("UPDATE empleados SET nombre=:nomb , celular=:descr , direccion=:dire , imagen=:img
+            $stm = $this-> dbCnx -> prepare("UPDATE empleados SET empleado_nombre=:nomb , celular=:descr , direccion=:dire , imagen=:img
             WHERE empleadoId = :id");
             $stm->bindParam(":id",$this->empleadoId);
-            $stm->bindParam(":nomb",$this->nombre);
+            $stm->bindParam(":nomb",$this->empleado_nombre);
             $stm->bindParam(":descr",$this->celular);
             $stm->bindParam(":dire",$this->direccion);
             $stm->bindParam(":img",$this->imagen);

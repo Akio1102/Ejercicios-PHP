@@ -4,7 +4,7 @@ if(isset($_POST["guardar"])){
 
     $config = new Empleados();
 
-    $config->setNombre($_POST["nombre"]);
+    $config->setEmpleado_nombre($_POST["empleado_nombre"]);
     $config->setCelular($_POST["celular"]);
     $config->setDireccion($_POST["direccion"]);
     $config->setImagen($_POST["imagen"]);

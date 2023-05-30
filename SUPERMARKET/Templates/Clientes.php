@@ -87,7 +87,7 @@ $all = $data -> getAll();
             ?> 
               <tr>
                 <td> <?= $val["clienteId"] ?> </td>
-                <td> <?= $val["nombre"] ?> </td>
+                <td> <?= $val["clientes_nombre"] ?> </td>
                 <td> <?= $val["celular"] ?> </td>
                 <td> <?= $val["compania"] ?> </td>
                 <td>
@@ -130,11 +130,11 @@ $all = $data -> getAll();
             <form class="col d-flex flex-wrap" action="../Controllers/Clientes/registrarClientes.php" method="post">
 
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="clientes_nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="clientes_nombre"
+                  name="clientes_nombre"
                   class="form-control"
                   required  
                 />

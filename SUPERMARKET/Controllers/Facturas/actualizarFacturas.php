@@ -107,14 +107,14 @@ if (isset($_POST["editar"])) {
                   <?php
                     foreach($idEmpleado as $key => $valor){
                     ?> 
-                  <option selected value="<?= $empleado["empleadoId"]?>"><?= $empleado["nombre"]?></option>
+                  <option selected value="<?= $empleado["empleadoId"]?>"><?= $empleado["empleado_nombre"]?></option>
                   <?php
                     }
                   ?>
                   <?php
                     foreach($idempleados as $key => $valor){
                     ?> 
-                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["nombre"]?></option>
+                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["clientes_nombre"]?></option>
                   <?php
                     }
                   ?>
