@@ -68,6 +68,21 @@ class RegistroUser  extends Conectar{
       $this->password = $password;
     }
 
+    public function checkUser(){
+      try {
+        $stm = $this-> dbCnx -> prepare("SELECT * FROM users WHERE email=:email");
+        $stm->bindParam(":email",$this->email);
+        $stm -> execute();
+        if ($stm->fetchColumn()) {
+          return true;
+        }else{
+          return false;
+        }
+      } catch (Exception $e) {
+        return $e->getMessages();
+      }
+    }
+
     public function insertData(){
         try {
           $stm = $this-> dbCnx -> prepare("INSERT INTO users(idCamper,email,username,password) 
