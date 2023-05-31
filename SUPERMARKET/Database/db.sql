@@ -4,7 +4,7 @@ USE supermarket;
 
 CREATE TABLE categorias(
     categoriasId INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(255) NOT NULL,
+    categorias_nombre VARCHAR(255) NOT NULL,
     descripcion VARCHAR(255) NOT NULL,
     imagen VARCHAR(255) NOT NULL,
     PRIMARY KEY(categoriasId)
@@ -21,6 +21,7 @@ CREATE TABLE clientes(
 CREATE TABLE empleados(
     empleadoId INT NOT NULL AUTO_INCREMENT,
     empleado_nombre VARCHAR(255) NOT NULL,
+    rol VARCHAR(255) NOT NULL,
     celular INT NOT NULL,
     direccion VARCHAR(255) NOT NULL,
     imagen VARCHAR(255) NOT NULL,
@@ -39,7 +40,7 @@ CREATE TABLE facturas(
 
 CREATE TABLE proveedores(
     proveedorId INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(10) NOT NULL,
+    proveedor_nombre VARCHAR(10) NOT NULL,
     telefono INT NOT NULL,
     ciudad VARCHAR(12) NOT NULL,
     PRIMARY KEY(proveedorId)
@@ -53,7 +54,7 @@ CREATE TABLE productos(
     unidadesPedidas INT NOT NULL,
     proveedorId INT,
     nombreProducto VARCHAR(10) NOT NULL,
-    descontinuado BOOLEAN,
+    descontinuado VARCHAR(10) NOT NULL,
     PRIMARY KEY(productoId),
     FOREIGN KEY (categoriasId) REFERENCES categorias(categoriasId),
     FOREIGN KEY (proveedorId) REFERENCES proveedores(proveedorId)

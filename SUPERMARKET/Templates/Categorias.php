@@ -87,7 +87,7 @@ $all = $data -> getAll();
             ?> 
               <tr>
                 <td> <?= $val["categoriasId"] ?> </td>
-                <td> <?= $val["nombre"] ?> </td>
+                <td> <?= $val["categorias_nombre"] ?> </td>
                 <td> <?= $val["descripcion"] ?> </td>
                 <td> <?= $val["imagen"] ?> </td>
                 <td>
@@ -129,11 +129,11 @@ $all = $data -> getAll();
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
             <form class="col d-flex flex-wrap" action="../Controllers/Categorias/registrarCategorias.php" method="post">
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="categorias_nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="categorias_nombre"
+                  name="categorias_nombre"
                   class="form-control"
                   required  
                 />

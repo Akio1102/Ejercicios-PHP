@@ -4,7 +4,7 @@ if(isset($_POST["guardar"])){
 
     $config = new Proveedores();
 
-    $config->setNombre($_POST["nombre"]);
+    $config->setProveedorNombre($_POST["proveedor_nombre"]);
     $config->setTelefono($_POST["telefono"]);
     $config->setCiudad($_POST["ciudad"]);
     

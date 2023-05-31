@@ -73,6 +73,7 @@ $all = $data -> getAll();
             <tr>
               <th scope="col">#</th>
               <th scope="col">NOMBRE</th>
+              <th scope="col">ROL</th>
               <th scope="col">CELULAR</th>
               <th scope="col">DIRECCION</th>
               <th scope="col">IMAGEN</th>
@@ -89,6 +90,7 @@ $all = $data -> getAll();
               <tr>
                 <td> <?= $val["empleadoId"] ?> </td>
                 <td> <?= $val["empleado_nombre"] ?> </td>
+                <td> <?= $val["rol"] ?> </td>
                 <td> <?= $val["celular"] ?> </td>
                 <td> <?= $val["direccion"] ?> </td>
                 <td> <?= $val["imagen"] ?> </td>
@@ -139,6 +141,16 @@ $all = $data -> getAll();
                   class="form-control"
                   required  
                 />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="rol" class="form-label">Empleado Rol</label>
+                <select class="form-select" aria-label="Default select example" id="rol" name="rol" required>
+                  <option selected>Seleccione el Rol del Empleados</option>
+                  <option value="Administrador">Administrador</option>
+                  <option value="Jefe">Jefe</option>
+                  <option value="Trabajador">Trabajador</option>
+                </select>
               </div>
 
               <div class="mb-1 col-12">

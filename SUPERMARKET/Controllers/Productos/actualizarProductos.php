@@ -1,22 +1,27 @@
 <?php
-require_once("../../Models/Proveedores.php");
-$data = new Proveedores();
-$id = $_GET["proveedorId"];
-$data->setProveedorId($id);
+require_once("../../Models/Productos.php");
+$data = new Productos();
+$id = $_GET["productoId"];
+$data->setProductoId($id);
 
 $record = $data->selectOne();
+print_r($record);
 $val = $record[0];
 
 if (isset($_POST["editar"])) {
 
-  $data->setNombre($_POST["nombre"]);
-  $data->setTelefono($_POST["telefono"]);
-  $data->setCiudad($_POST["ciudad"]);
+  $data->setCategoriasId($_POST["categoriasId"]);
+  $data->setPrecioUnitario($_POST["precioUnitario"]);
+  $data->setStock($_POST["stock"]);
+  $data->setUnidadesPedidas($_POST["unidadesPedidas"]);
+  $data->setProveedorId($_POST["proveedorId"]);
+  $data->setNombreProducto($_POST["nombreProducto"]);
+  $data->setDescontinuado($_POST["descontinuado"]);
 
   $data->update();
    echo "
     <script> alert('Los Datos fueron Actualizados exitosamente');
-    document.location='../../Templates/Proveedores.php'
+    document.location='../../Templates/Productos.php'
     </script>"; 
 }
 
@@ -87,39 +92,89 @@ if (isset($_POST["editar"])) {
         <h2 class="m-2">Empleados a Editar</h2>
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action=""  method="post">
+                           <div class="mb-1 col-12">
+                <label for="categoriasId" class="form-label">Categorias ID</label>
+                <select class="form-select" aria-label="Default select example" id="categoriasId" name="categoriasId" required>
+                  <option selected>Seleccione el id de la Categorias</option>
+                  <?php
+                    foreach($idcategorias as $key => $valor){
+                    ?> 
+                  <option value="<?= $valor["categoriasId"]?>"><?= $valor["categorias_nombre"]?></option>
+                  <?php
+                    }
+                  ?>
+                </select>
+              </div>
+
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="precioUnitario" class="form-label">Precio Unitario</label>
                 <input 
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  class="form-control"  
-                  value="<?= $val["nombre"]?>"
+                  type="number"
+                  id="precioUnitario"
+                  name="precioUnitario"
+                  class="form-control"
+                  value="<?= $val["precioUnitario"]?>"
+                  required  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="telefono" class="form-label">Telefono</label>
+                <label for="stock" class="form-label">Stock</label>
                 <input 
-                  type="text"
-                  id="telefono"
-                  name="telefono"
-                  class="form-control"  
-                  value="<?= $val["telefono"]?>"
-                 
+                  type="number"
+                  id="stock"
+                  name="stock"
+                  class="form-control"
+                  value="<?= $val["stock"]?>"
+                  required  
                 />
               </div>
 
               <div class="mb-1 col-12">
-                <label for="ciudad" class="form-label">Ciudad</label>
+                <label for="unidadesPedidas" class="form-label">Unidades Pedidas</label>
+                <input 
+                  type="number"
+                  id="unidadesPedidas"
+                  name="unidadesPedidas"
+                  class="form-control"
+                  value="<?= $val["unidadesPedidas"]?>"
+                  required  
+                />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="proveedorId" class="form-label">Proveedor ID</label>
+                <select class="form-select" aria-label="Default select example" id="proveedorId" name="proveedorId" required>
+                  <option selected>Seleccione el id del Proveedor</option>
+                  <?php
+                    foreach($idproveedores as $key => $valor){
+                    ?> 
+                  <option value="<?= $valor["proveedorId"]?>"><?= $valor["proveedor_nombre"]?></option>
+                  <?php
+                    }
+                  ?>
+                </select>
+              </div>
+  
+              <div class="mb-1 col-12">
+                <label for="nombreProducto" class="form-label">Nombre Producto</label>
                 <input 
                   type="text"
-                  id="ciudad"
-                  name="ciudad"
-                  class="form-control"  
-                  value="<?= $val["ciudad"]?>"
-                 
+                  id="nombreProducto"
+                  name="nombreProducto"
+                  class="form-control"
+                  value="<?= $val["nombreProducto"]?>"
+                  required  
                 />
+              </div>
+
+              <div class="mb-1 col-12">
+                <label for="descontinuado" class="form-label">Descontinuado</label>
+                <select class="form-select" aria-label="Default select example" id="descontinuado" name="descontinuado" required>
+                  <option selected>Seleccione si esta Descontinuado o No</option>
+                  <option value="Descontinuado">Descontinuado</option>
+                  <option value="No Descontinuado">No Descontinuado</option>
+                </select>
               </div>
 
               <div class=" col-12 m-2">

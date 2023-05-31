@@ -5,13 +5,13 @@ require_once("Pdo.php");
 class Proveedores extends ConexiónPdo{
     
     private $proveedorId;
-    private $nombre;
+    private $proveedor_nombre;
     private $telefono;
     private $ciudad;
 
-    public function __construct($proveedorId= 0, $nombre= "", $telefono=0, $ciudad=""){
+    public function __construct($proveedorId= 0, $proveedor_nombre= "", $telefono=0, $ciudad=""){
         $this->proveedorId = $proveedorId;
-        $this->nombre = $nombre;
+        $this->proveedor_nombre = $proveedor_nombre;
         $this->telefono = $telefono;
         $this->ciudad = $ciudad;
         parent::__construct();
@@ -22,8 +22,8 @@ class Proveedores extends ConexiónPdo{
         return $this->proveedorId;
     }
 
-    public function getNombre(){
-        return $this->nombre;
+    public function getProveedorNombre(){
+        return $this->proveedor_nombre;
     }
 
     public function getTelefono(){
@@ -39,8 +39,8 @@ class Proveedores extends ConexiónPdo{
         $this->proveedorId =$proveedorId;
     }
 
-    public function setNombre($nombre){
-        $this->nombre =$nombre;
+    public function setProveedorNombre($proveedor_nombre){
+        $this->proveedor_nombre =$proveedor_nombre;
     }
 
     public function setTelefono($telefono){
@@ -53,9 +53,9 @@ class Proveedores extends ConexiónPdo{
 
     public function insertData(){
         try {
-            $stm = $this-> dbCnx -> prepare("INSERT INTO proveedores(nombre,telefono,ciudad) 
+            $stm = $this-> dbCnx -> prepare("INSERT INTO proveedores(proveedor_nombre,telefono,ciudad) 
             VALUES (:nomb,:cel,:dire)");
-            $stm->bindParam(":nomb",$this->nombre);
+            $stm->bindParam(":nomb",$this->proveedor_nombre);
             $stm->bindParam(":cel",$this->telefono);
             $stm->bindParam(":dire",$this->ciudad);
             $stm->execute();
@@ -98,10 +98,10 @@ class Proveedores extends ConexiónPdo{
 
     public function update(){
         try {
-            $stm = $this-> dbCnx -> prepare("UPDATE proveedores SET nombre=:nomb , telefono=:tel , ciudad=:city
+            $stm = $this-> dbCnx -> prepare("UPDATE proveedores SET proveedor_nombre=:nomb , telefono=:tel , ciudad=:city
             WHERE proveedorId = :id");
             $stm->bindParam(":id",$this->proveedorId);
-            $stm->bindParam(":nomb",$this->nombre);
+            $stm->bindParam(":nomb",$this->proveedor_nombre);
             $stm->bindParam(":tel",$this->telefono);
             $stm->bindParam(":city",$this->ciudad);
             $stm -> execute();

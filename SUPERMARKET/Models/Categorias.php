@@ -5,13 +5,13 @@ require_once("Pdo.php");
 class Categorias extends ConexiónPdo{
     
     private $categoriasId;
-    private $nombre;
+    private $categorias_nombre;
     private $descripcion;
     private $imagen;
 
-    public function __construct($categoriasId= 0, $nombre= "", $descripcion="", $imagen=""){
+    public function __construct($categoriasId= 0, $categorias_nombre= "", $descripcion="", $imagen=""){
         $this->categoriasId = $categoriasId;
-        $this->nombre = $nombre;
+        $this->categorias_nombre = $categorias_nombre;
         $this->descripcion = $descripcion;
         $this->imagen = $imagen;
         parent::__construct();
@@ -22,8 +22,8 @@ class Categorias extends ConexiónPdo{
         return $this->categoriasId;
     }
 
-    public function getNombre(){
-        return $this->nombre;
+    public function getCategorias_nombre(){
+        return $this->categorias_nombre;
     }
 
     public function getDescripcion(){
@@ -39,8 +39,8 @@ class Categorias extends ConexiónPdo{
         $this->categoriasId =$categoriasId;
     }
 
-    public function setNombre($nombre){
-        $this->nombre =$nombre;
+    public function setCategorias_nombre($categorias_nombre){
+        $this->categorias_nombre =$categorias_nombre;
     }
 
     public function setDescripcion($descripcion){
@@ -53,9 +53,9 @@ class Categorias extends ConexiónPdo{
 
     public function insertData(){
         try {
-            $stm = $this-> dbCnx -> prepare("INSERT INTO categorias(nombre,descripcion,imagen) 
+            $stm = $this-> dbCnx -> prepare("INSERT INTO categorias(categorias_nombre,descripcion,imagen) 
             VALUES (:nomb,:descr,:img)");
-            $stm->bindParam(":nomb",$this->nombre);
+            $stm->bindParam(":nomb",$this->categorias_nombre);
             $stm->bindParam(":descr",$this->descripcion);
             $stm->bindParam(":img",$this->imagen);
             $stm->execute();
@@ -98,10 +98,10 @@ class Categorias extends ConexiónPdo{
 
     public function update(){
         try {
-            $stm = $this-> dbCnx -> prepare("UPDATE categorias SET nombre=:nomb , descripcion=:descr , imagen=:img
+            $stm = $this-> dbCnx -> prepare("UPDATE categorias SET categorias_nombre=:nomb , descripcion=:descr , imagen=:img
             WHERE categoriasId = :id");
             $stm->bindParam(":id",$this->categoriasId);
-            $stm->bindParam(":nomb",$this->nombre);
+            $stm->bindParam(":nomb",$this->categorias_nombre);
             $stm->bindParam(":descr",$this->descripcion);
             $stm->bindParam(":img",$this->imagen);
             $stm -> execute();

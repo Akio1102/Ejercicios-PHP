@@ -92,7 +92,25 @@ class Productos extends ConexiónPdo{
         $this->descontinuado =$descontinuado;
     }
 
+    public function obtenerCategoriasId(){
+        try {
+            $stm = $this-> dbCnx -> prepare("SELECT categoriasId,categorias_nombre FROM categorias");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessages();
+        }
+    }
 
+    public function obtenerProveedoresId(){
+        try {
+            $stm = $this-> dbCnx -> prepare("SELECT proveedorId,proveedor_nombre FROM proveedores");
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessages();
+        }
+    }
 
     public function insertData(){
         try {
@@ -113,7 +131,7 @@ class Productos extends ConexiónPdo{
 
     public function getAll(){
         try {
-            $stm = $this-> dbCnx -> prepare("SELECT * FROM productos");
+            $stm = $this-> dbCnx -> prepare("SELECT * FROM productos INNER JOIN categorias ON productos.categoriasId = categorias.categoriasId INNER JOIN proveedores ON productos.proveedorId = proveedores.proveedorId");
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
@@ -145,12 +163,15 @@ class Productos extends ConexiónPdo{
 
     public function update(){
         try {
-            $stm = $this-> dbCnx -> prepare("UPDATE productos SET categoriasId=:nomb , precioUnitario=:tel , stock=:city , unidadesPedidas=, proveedorId=, nombreProducto,descontinuado
-            WHERE productoId = :id");
+            $stm = $this-> dbCnx -> prepare("UPDATE productos SET categoriasId=:catId , precioUnitario=:precio , stock=:stock , unidadesPedidas=:unidades, proveedorId=:provId, nombreProducto=:namePro, descontinuado=:desco WHERE productoId = :id");
             $stm->bindParam(":id",$this->productoId);
-            $stm->bindParam(":nomb",$this->categoriasId);
-            $stm->bindParam(":tel",$this->precioUnitario);
-            $stm->bindParam(":city",$this->stock);
+            $stm->bindParam(":catId",$this->categoriasId);
+            $stm->bindParam(":precio",$this->precioUnitario);
+            $stm->bindParam(":stock",$this->stock);
+            $stm->bindParam(":unidades",$this->unidadesPedidas);
+            $stm->bindParam(":provId",$this->proveedorId);
+            $stm->bindParam(":namePro",$this->nombreProducto);
+            $stm->bindParam(":desco",$this->descontinuado);
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
@@ -159,6 +180,3 @@ class Productos extends ConexiónPdo{
     }
 }
 ?>
-
- productos(categoriasId,precioUnitario,stock,unidadesPedidas,proveedorId,nombreProducto,descontinuado) 
-            VALUES (:cateID,:precio,:stock,:unidades,:proveID,:namePro,:descontinuado)

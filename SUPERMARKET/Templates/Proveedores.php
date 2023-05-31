@@ -87,7 +87,7 @@ $all = $data -> getAll();
             ?> 
               <tr>
                 <td> <?= $val["proveedorId"] ?> </td>
-                <td> <?= $val["nombre"] ?> </td>
+                <td> <?= $val["proveedor_nombre"] ?> </td>
                 <td> <?= $val["telefono"] ?> </td>
                 <td> <?= $val["ciudad"] ?> </td>
                 <td>
@@ -125,11 +125,11 @@ $all = $data -> getAll();
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
             <form class="col d-flex flex-wrap" action="../Controllers/Proveedores/registrarProveedores.php" method="post">
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="proveedor_nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="proveedor_nombre"
+                  name="proveedor_nombre"
                   class="form-control"
                   required  
                 />

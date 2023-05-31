@@ -8,7 +8,7 @@ $record = $data->selectOne();
 $val = $record[0];
 
 if (isset($_POST["editar"])) {
-  $data->setNombre($_POST["nombre"]);
+  $data->setCategorias_nombre($_POST["categorias_nombre"]);
   $data->setDescripcion($_POST["descripcion"]);
   $data->setImagen($_POST["imagen"]);
 
@@ -87,13 +87,13 @@ if (isset($_POST["editar"])) {
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action=""  method="post">
               <div class="mb-1 col-12">
-                <label for="nombre" class="form-label">Nombre</label>
+                <label for="categorias_nombre" class="form-label">Nombre</label>
                 <input 
                   type="text"
-                  id="nombre"
-                  name="nombre"
+                  id="categorias_nombre"
+                  name="categorias_nombre"
                   class="form-control"  
-                  value="<?= $val["nombre"]?>"
+                  value="<?= $val["categorias_nombre"]?>"
                 />
               </div>
 

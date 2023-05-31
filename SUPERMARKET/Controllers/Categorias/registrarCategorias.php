@@ -4,7 +4,7 @@ if(isset($_POST["guardar"])){
 
     $config = new Categorias();
 
-    $config->setNombre($_POST["nombre"]);
+    $config->setCategorias_nombre($_POST["categorias_nombre"]);
     $config->setDescripcion($_POST["descripcion"]);
     $config->setImagen($_POST["imagen"]);
 
