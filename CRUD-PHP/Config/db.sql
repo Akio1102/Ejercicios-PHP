@@ -13,6 +13,16 @@ CREATE TABLE camper(
     PRIMARY KEY(id)
 );
 
+CREATE TABLE users(
+    id INT NOT NULL AUTO_INCREMENT,
+    idCamper INT NOT NULL,
+    email VARCHAR(80) NOT NULL,
+    username VARCHAR(80) NOT NULL,
+    password VARCHAR(80) NOT NULL,   
+    PRIMARY KEY(id),
+    FOREIGN KEY (idCamper) REFERENCES camper(id)
+);
+
 DROP TABLE camper;
 
 CREATE DATABASE facturacion;

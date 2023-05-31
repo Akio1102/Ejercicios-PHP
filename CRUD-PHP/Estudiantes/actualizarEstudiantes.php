@@ -1,6 +1,7 @@
 <?php
-require_once("config.php");
-$data = new Config();
+
+require_once("./Estudiante.php");
+$data = new Estudiante();
 $id = $_GET["id"];
 $data->setId($id);
 
@@ -20,7 +21,7 @@ if (isset($_POST["editar"])) {
   $data->update();
    echo "
     <script> alert('Los Datos fueron Actualizados exitosamente');
-    document.location='estudiantes.php'
+    document.location='./estudiantes.php'
     </script>"; 
 }
 

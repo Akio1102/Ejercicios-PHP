@@ -1,6 +1,6 @@
 <?php
-require_once("config.php");
-$data = new Config();
+require_once("./Estudiante.php");
+$data = new Estudiante();
 $all = $data -> getAll();
 ?>
 <!DOCTYPE html>
@@ -84,11 +84,11 @@ $all = $data -> getAll();
                 <td> <?= $val["asistencia"] ?> </td>
                 <td> <?= $val["especialidad"] ?> </td>
                 <td>
-                  <a class="btn btn-outline-danger" href="borrarEstudiantes.php?id=<?=$val['id']?>&req=delete">
+                  <a class="btn btn-outline-danger" href="./borrarEstudiantes.php?id=<?=$val['id']?>&req=delete">
                   <i class="bi bi-trash3"></i>Borrar</a>
                 </td>
                 <td>
-                  <a class="btn btn-outline-warning" href="actualizarEstudiantes.php?id=<?=$val['id']?>">
+                  <a class="btn btn-outline-warning" href="./actualizarEstudiantes.php?id=<?=$val['id']?>">
                   <i class="bi bi-pencil-square"></i>Editar</a>
                 </td>
               </tr>
@@ -120,7 +120,7 @@ $all = $data -> getAll();
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body" style="background-color: rgb(231, 253, 246);">
-            <form class="col d-flex flex-wrap" action="registrarEstudiantes.php" method="post">
+            <form class="col d-flex flex-wrap" action="./registrarEstudiantes.php" method="post">
               <div class="mb-1 col-12">
                 <label for="nombres" class="form-label">Nombres</label>
                 <input 
