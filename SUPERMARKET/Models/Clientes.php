@@ -60,7 +60,7 @@ class Clientes extends ConexiónPdo{
             $stm->bindParam(":comp",$this->compania);
             $stm->execute();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 
@@ -70,7 +70,7 @@ class Clientes extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
     
@@ -81,7 +81,7 @@ class Clientes extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
     
@@ -92,7 +92,7 @@ class Clientes extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 
@@ -107,7 +107,7 @@ class Clientes extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 }

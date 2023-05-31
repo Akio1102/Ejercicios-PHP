@@ -1,5 +1,4 @@
 <?php
-
 require_once("Pdo.php");
 
 class Productos extends ConexiónPdo{
@@ -13,7 +12,7 @@ class Productos extends ConexiónPdo{
     private $nombreProducto;
     private $descontinuado;
 
-    public function __construct($productoId= 0, $categoriasId= 0, $precioUnitario=0, $stock=0,$unidadesPedidas=0,$proveedorId=0,$nombreProducto="",$descontinuado=0){
+    public function __construct($productoId= 0, $categoriasId= 0, $precioUnitario=0, $stock=0,$unidadesPedidas=0,$proveedorId=0,$nombreProducto="",$descontinuado=""){
         $this->productoId = $productoId;
         $this->categoriasId = $categoriasId;
         $this->precioUnitario = $precioUnitario;
@@ -98,7 +97,7 @@ class Productos extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 
@@ -108,7 +107,7 @@ class Productos extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 
@@ -125,7 +124,7 @@ class Productos extends ConexiónPdo{
             $stm->bindParam(":descontinuado",$this->descontinuado);
             $stm->execute();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 
@@ -135,7 +134,7 @@ class Productos extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
     
@@ -146,7 +145,7 @@ class Productos extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
     
@@ -157,7 +156,7 @@ class Productos extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 
@@ -175,7 +174,7 @@ class Productos extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 }

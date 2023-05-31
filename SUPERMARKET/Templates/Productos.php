@@ -186,7 +186,7 @@ $idproveedores = $data->obtenerProveedoresId();
                 <label for="proveedorId" class="form-label">Proveedor ID</label>
                 <select class="form-select" aria-label="Default select example" id="proveedorId" name="proveedorId" required>
                   <option selected>Seleccione el id del Proveedor</option>
-                  <?php
+                  <?php 
                     foreach($idproveedores as $key => $valor){
                     ?> 
                   <option value="<?= $valor["proveedorId"]?>"><?= $valor["proveedor_nombre"]?></option>

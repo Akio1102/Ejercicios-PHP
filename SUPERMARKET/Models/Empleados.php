@@ -82,7 +82,7 @@ class Empleados extends ConexiónPdo{
             $stm->bindParam(":img",$this->imagen);
             $stm->execute();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 
@@ -92,7 +92,7 @@ class Empleados extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
     
@@ -103,7 +103,7 @@ class Empleados extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
     
@@ -114,7 +114,7 @@ class Empleados extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 
@@ -131,7 +131,7 @@ class Empleados extends ConexiónPdo{
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {
-            return $e->getMessages();
+            return $e->getMessage();
         }
     }
 }

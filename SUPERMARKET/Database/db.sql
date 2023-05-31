@@ -53,8 +53,8 @@ CREATE TABLE productos(
     stock INT NOT NULL,
     unidadesPedidas INT NOT NULL,
     proveedorId INT,
-    nombreProducto VARCHAR(10) NOT NULL,
-    descontinuado VARCHAR(10) NOT NULL,
+    nombreProducto VARCHAR(50) NOT NULL,
+    descontinuado VARCHAR(50) NOT NULL,
     PRIMARY KEY(productoId),
     FOREIGN KEY (categoriasId) REFERENCES categorias(categoriasId),
     FOREIGN KEY (proveedorId) REFERENCES proveedores(proveedorId)

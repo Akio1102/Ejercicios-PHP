@@ -17,6 +17,6 @@ if(isset($_POST["guardar"])){
     echo "
     <script> alert('Los datos fueron guardados exitosamente');
     document.location='../../Templates/Productos.php'
-    </script>"; 
+    </script>";
 }
 ?>
