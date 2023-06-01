@@ -10,7 +10,7 @@ $val = $record[0];
 if (isset($_POST["editar"])) {
 
   $data->setEmpleado_nombre($_POST["empleado_nombre"]);
-  $data->setRol($_POST["rol"]);
+  /* $data->setRol($_POST["rol"]); */
   $data->setCelular($_POST["celular"]);
   $data->setDireccion($_POST["direccion"]);
   $data->setImagen($_POST["imagen"]);
@@ -100,15 +100,15 @@ if (isset($_POST["editar"])) {
                 />
               </div>
 
-              <div class="mb-1 col-12">
+<!--               <div class="mb-1 col-12">
                 <label for="rol" class="form-label">Empleado Rol</label>
                 <select class="form-select" aria-label="Default select example" id="rol" name="rol" required>
-                  <option selected><?= $val["rol"]?></option>
+                  <option selected><= $val["rol"]?></option>
                   <option value="Administrador">Administrador</option>
                   <option value="Jefe">Jefe</option>
                   <option value="Trabajador">Trabajador</option>
                 </select>
-              </div>
+              </div> -->
 
               <div class="mb-1 col-12">
                 <label for="celular" class="form-label">Celular</label>

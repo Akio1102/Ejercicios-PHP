@@ -21,28 +21,28 @@
             <img src="./assets/images/camper.png" alt="" class="logo"></div>
             <div class="d-flex justify-content-center align-items-center"><h1 style="font-weight: 800;">BIENVENIDOS</h1></div>
             <div  class="d-flex justify-content-center align-items-center" >
-                <form>
+                <form action="../Controllers/Login/Login.php" method="POST">
                     <div class="mb-3">
-                    <label for="campo" class="form-label">Campo</label>
+                    <label for="email" class="form-label">Email</label>
                         <input 
-                          type="text"
-                          id="campo"
-                          name="campo"
+                          type="email"
+                          id="email"
+                          name="email"
                           class="form-control"  
                         />
                       <div id="emailHelp" class="form-text">Mañana es una excusa maravillosa, ¿No crees?</div>
                     </div>
                     <div class="mb-3">
-                    <label for="campo" class="form-label">Campo</label>
+                    <label for="password" class="form-label">Password</label>
                         <input 
-                          type="text"
-                          id="campo"
-                          name="campo"
+                          type="password"
+                          id="password"
+                          name="password"
                           class="form-control"  
                         />
                     </div>
                  
-                    <button type="submit" class="btn btn-primary"></button>
+                    <input type="submit" class="btn btn-primary" value="Loguearse" name="loguearse" />
                   </form>
                   
 
@@ -62,32 +62,32 @@
                 
              <div  class="d-flex justify-content-center align-items-center" >
                 
-                <form>
-                    <h1 class="m-5" style="font-weight: 800;">REGISTRAR</h1>
+                <form action="../Controllers/Users/registrarUsers.php" method="POST">
+                    <h1 class="m-5" style="font-weight: 800;">REGISTRAR USUARIO</h1>
                     <div class="mb-3">
-                        <label for="campo" class="form-label">campo</label>
+                        <label for="email" class="form-label">Email</label>
                         <input 
-                          type="text"
-                          id="campo"
-                          name="campo"
+                          type="email"
+                          id="email"
+                          name="email"
                           class="form-control"  
                         />
                       </div>
                     <div class="mb-3">
-                    <label for="campo" class="form-label">campo</label>
+                    <label for="username" class="form-label">User Name</label>
                         <input 
                           type="text"
-                          id="campo"
-                          name="campo"
+                          id="username"
+                          name="username"
                           class="form-control"  
                         />
                     </div>
                     <div class="mb-3">
-                    <label for="campo" class="form-label">campo</label>
+                    <label for="password" class="form-label">Password</label>
                         <input 
                           type="password"
-                          id="campo"
-                          name="campo"
+                          id="password"
+                          name="password"
                           class="form-control"  
                         />
                     </div>
@@ -95,7 +95,7 @@
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
                       <label class="form-check-label" for="exampleCheck1">Check me out</label>
                     </div>
-                    <button type="submit" class="btn btn-primary"></button>
+                    <input type="submit" class="btn btn-primary" value="Registrarse" name="registrarse" />
                   </form>
 
             </div>

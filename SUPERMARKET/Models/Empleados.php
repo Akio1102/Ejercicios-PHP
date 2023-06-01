@@ -6,15 +6,15 @@ class Empleados extends ConexiónPdo{
     
     private $empleadoId;
     private $empleado_nombre;
-    private $rol;
+    /* private $rol; */
     private $celular;
     private $direccion;
     private $imagen;
 
-    public function __construct($empleadoId= 0, $empleado_nombre= "",$rol=0, $celular=0, $direccion="",$imagen=""){
+    public function __construct($empleadoId= 0, $empleado_nombre= "",/* $rol=0 */ $celular=0, $direccion="",$imagen=""){
         $this->empleadoId = $empleadoId;
         $this->empleado_nombre = $empleado_nombre;
-        $this->rol = $rol;
+        /* $this->rol = $rol; */
         $this->celular = $celular;
         $this->direccion = $direccion;
         $this->imagen = $imagen;
@@ -30,9 +30,9 @@ class Empleados extends ConexiónPdo{
         return $this->empleado_nombre;
     }
 
-    public function getRol(){
+    /* public function getRol(){
         return $this->rol;
-    }
+    } */
 
     public function getCelular(){
         return $this->celular;
@@ -55,9 +55,9 @@ class Empleados extends ConexiónPdo{
         $this->empleado_nombre =$empleado_nombre;
     }
 
-    public function setRol($rol){
+    /* public function setRol($rol){
         $this->rol =$rol;
-    }
+    } */
 
     public function setCelular($celular){
         $this->celular =$celular;
@@ -73,10 +73,10 @@ class Empleados extends ConexiónPdo{
 
     public function insertData(){
         try {
-            $stm = $this-> dbCnx -> prepare("INSERT INTO empleados(empleado_nombre,rol,celular,direccion,imagen) 
-            VALUES (:nomb,:rol,:cel,:dire,:img)");
+            $stm = $this-> dbCnx -> prepare("INSERT INTO empleados(empleado_nombre,/* rol, */celular,direccion,imagen) 
+            VALUES (:nomb,/* :rol, */:cel,:dire,:img)");
             $stm->bindParam(":nomb",$this->empleado_nombre);
-            $stm->bindParam(":rol",$this->rol);
+            /* $stm->bindParam(":rol",$this->rol); */
             $stm->bindParam(":cel",$this->celular);
             $stm->bindParam(":dire",$this->direccion);
             $stm->bindParam(":img",$this->imagen);
@@ -120,11 +120,11 @@ class Empleados extends ConexiónPdo{
 
     public function update(){
         try {
-            $stm = $this-> dbCnx -> prepare("UPDATE empleados SET empleado_nombre=:nomb , rol=:rol, celular=:descr , direccion=:dire , imagen=:img
+            $stm = $this-> dbCnx -> prepare("UPDATE empleados SET empleado_nombre=:nomb , /* rol=:rol, */ celular=:descr , direccion=:dire , imagen=:img
             WHERE empleadoId = :id");
             $stm->bindParam(":id",$this->empleadoId);
             $stm->bindParam(":nomb",$this->empleado_nombre);
-            $stm->bindParam(":rol",$this->rol);
+            /* $stm->bindParam(":rol",$this->rol); */
             $stm->bindParam(":descr",$this->celular);
             $stm->bindParam(":dire",$this->direccion);
             $stm->bindParam(":img",$this->imagen);

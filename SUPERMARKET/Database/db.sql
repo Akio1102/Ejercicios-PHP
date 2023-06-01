@@ -68,3 +68,13 @@ CREATE TABLE facturaDetalle(
     FOREIGN KEY (facturaId) REFERENCES facturas(facturaId),
     FOREIGN KEY (productoId) REFERENCES productos(productoId)
 );
+
+CREATE TABLE users(
+    id INT NOT NULL AUTO_INCREMENT,
+    id_Empleado INT NOT NULL,
+    email VARCHAR(80) NOT NULL,
+    username VARCHAR(80) NOT NULL,
+    password VARCHAR(80) NOT NULL,   
+    PRIMARY KEY(id),
+    FOREIGN KEY (id_Empleado) REFERENCES empleados(empleadoId)
+);

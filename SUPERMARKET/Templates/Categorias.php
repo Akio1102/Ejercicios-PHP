@@ -59,6 +59,10 @@ $all = $data -> getAll();
           <i class="bi bi-people"></i>
           <h3>Factura Detalle</h3>
         </a>
+        <a href="./Login.php" style="display: flex;gap:2px;color: brown;">
+          <i class="bi bi-x-square"></i>
+          <h3 style="margin: 0px;">salir</h3>
+        </a>
       </div>
     </div>
 
