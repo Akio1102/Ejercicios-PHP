@@ -1,6 +1,7 @@
 <?php
 
 require_once("Pdo.php");
+require_once("Login.php");
 
 class Users extends ConexiónPdo{
     
@@ -61,6 +62,20 @@ class Users extends ConexiónPdo{
         $this->password =$password;
     }
 
+    public function checkUser($email){
+      try {
+        $stm = $this-> dbCnx -> prepare("SELECT * FROM users WHERE email='$email'");
+        $stm -> execute();
+        if ($stm->fetchColumn()) {
+          return true;
+        }else{
+          return false;
+        }
+      } catch (Exception $e) {
+        return $e->getMessage();
+      }
+    }
+
     public function insertData(){
         try {
             $stm = $this-> dbCnx -> prepare("INSERT INTO users(id_Empleado,email,username,password) 
@@ -70,6 +85,13 @@ class Users extends ConexiónPdo{
             $stm->bindParam(":user",$this->username);
             $stm->bindParam(":pass",md5($this->password));
             $stm->execute();
+
+            $login = new Login();
+
+            $login->setEmail($_POST["email"]);
+            $login->setPassword($_POST["password"]);
+
+            $success = $login->login();
         } catch (Exception $e) {
             return $e->getMessage();
         }
@@ -78,44 +100,6 @@ class Users extends ConexiónPdo{
     public function getAll(){
         try {
             $stm = $this-> dbCnx -> prepare("SELECT * FROM users");
-            $stm -> execute();
-            return $stm -> fetchAll();
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-    }
-    
-    public function delete(){
-        try {
-            $stm = $this-> dbCnx -> prepare("DELETE FROM users WHERE id = :id");
-            $stm->bindParam(":id",$this->id);
-            $stm -> execute();
-            return $stm -> fetchAll();
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-    }
-    
-    public function selectOne(){
-        try {
-            $stm = $this-> dbCnx -> prepare("SELECT * FROM users WHERE id = :id");
-            $stm->bindParam(":id",$this->id);
-            $stm -> execute();
-            return $stm -> fetchAll();
-        } catch (Exception $e) {
-            return $e->getMessage();
-        }
-    }
-
-    public function update(){
-        try {
-            $stm = $this-> dbCnx -> prepare("UPDATE empleados SET id_Empleado=:idEmpl ,email=:ema , username=:user , password=:pass
-            WHERE id = :id");
-            $stm->bindParam(":id",$this->id);
-            $stm->bindParam(":idEmpl",$this->id_Empleado);
-            $stm->bindParam(":ema",$this->email);
-            $stm->bindParam(":user",$this->username);
-            $stm->bindParam(":pass",$this->password);
             $stm -> execute();
             return $stm -> fetchAll();
         } catch (Exception $e) {

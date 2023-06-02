@@ -7,7 +7,7 @@ $idCliente= $_GET["clienteId"];
 
 $data->setFacturaId($idFactura);
 $data->setEmpleadoId($idEmpleado);
-$data->setClienteId($clienteId);
+$data->setClienteId($idCliente);
 
 
 $empleado = $data->EmpleadoId();
@@ -21,7 +21,6 @@ $val = $record[0];
 
 if (isset($_POST["editar"])) {
 
-  $data->setFacturaId($_POST["facturaId"]);
   $data->setEmpleadoId($_POST["empleadoId"]);
   $data->setClienteId($_POST["clienteId"]);
   $data->setFecha($_POST["fecha"]);
@@ -105,16 +104,16 @@ if (isset($_POST["editar"])) {
                 <label for="empleadoId" class="form-label">Empleado ID</label>
                 <select class="form-select" aria-label="Default select example" id="empleadoId" name="empleadoId" required>
                   <?php
-                    foreach($idEmpleado as $key => $valor){
+                    foreach($empleado as $key => $valor){
                     ?> 
-                  <option selected value="<?= $empleado["empleadoId"]?>"><?= $empleado["empleado_nombre"]?></option>
+                  <option selected value="<?= $valor["empleadoId"]?>"><?= $valor["empleado_nombre"]?></option>
                   <?php
                     }
                   ?>
                   <?php
                     foreach($idempleados as $key => $valor){
                     ?> 
-                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["clientes_nombre"]?></option>
+                  <option value="<?= $valor["empleadoId"]?>"><?= $valor["empleado_nombre"]?></option>
                   <?php
                     }
                   ?>
@@ -125,16 +124,16 @@ if (isset($_POST["editar"])) {
                 <label for="clienteId" class="form-label">Cliente Id</label>
                 <select class="form-select" aria-label="Default select example" id="clienteId" name="clienteId" required>
                   <?php
-                    foreach($idCliente as $key => $valor){
+                    foreach($cliente as $key => $valor){
                     ?> 
-                  <option selected value="<?= $cliente["clienteId"]?>"><?= $cliente["nombre"]?></option>
+                  <option selected value="<?= $valor["clienteId"]?>"><?= $valor["clientes_nombre"]?></option>
                   <?php
                     }
                   ?>
                   <?php
                     foreach($idclientes as $key => $valor){
                     ?> 
-                  <option value="<?= $valor["clienteId"]?>"><?= $valor["nombre"]?></option>
+                  <option value="<?= $valor["clienteId"]?>"><?= $valor["clientes_nombre"]?></option>
                   <?php
                     }
                   ?>

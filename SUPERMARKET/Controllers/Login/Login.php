@@ -1,12 +1,12 @@
 <?php
+//  ini_set("display_errors", 1);
 
- ini_set("display_errors", 1);
+//  ini_set("display_startup_errors", 1);
 
- ini_set("display_startup_errors", 1);
+//  error_reporting(E_ALL);
 
- error_reporting(E_ALL);
-    session_start();
-    if (isset($_POST["loguearse"])) {
+session_start();
+if (isset($_POST["loguearse"])) {
     require_once("../../Models/Login.php");
 
     $credenciales = new Login();
@@ -19,12 +19,11 @@
     if ($login) {
         header("Location: ../../Templates/Home.php");
     }else{
-
+        echo "
+        <script> alert('Password/Email Invalidos');
+        document.location='../../Templates/Index.php'
+        </script>";
     }
 
-    echo "
-    <script> alert('Password/Email Invalidos');
-    document.location='../../Templates/Login.php'
-    </script>";
 }
 ?>

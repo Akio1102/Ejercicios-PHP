@@ -21,7 +21,7 @@ CREATE TABLE clientes(
 CREATE TABLE empleados(
     empleadoId INT NOT NULL AUTO_INCREMENT,
     empleado_nombre VARCHAR(255) NOT NULL,
-    rol VARCHAR(255) NOT NULL,
+    -- rol VARCHAR(255) NOT NULL,
     celular INT NOT NULL,
     direccion VARCHAR(255) NOT NULL,
     imagen VARCHAR(255) NOT NULL,
@@ -63,7 +63,7 @@ CREATE TABLE productos(
 CREATE TABLE facturaDetalle(
     facturaId INT,
     productoId INT,
-    cantidadId INT NOT NULL,
+    cantidad INT NOT NULL,
     precioVenta INT NOT NULL,
     FOREIGN KEY (facturaId) REFERENCES facturas(facturaId),
     FOREIGN KEY (productoId) REFERENCES productos(productoId)
@@ -78,3 +78,6 @@ CREATE TABLE users(
     PRIMARY KEY(id),
     FOREIGN KEY (id_Empleado) REFERENCES empleados(empleadoId)
 );
+
+
+INSERT INTO empleados (empleado_nombre,celular,direccion,imagen) VALUES("Admin",123,"Calle 1","xd");

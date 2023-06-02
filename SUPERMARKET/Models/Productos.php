@@ -101,7 +101,29 @@ class Productos extends ConexiónPdo{
         }
     }
 
-    public function obtenerProveedoresId(){
+    public function CategoriasId(){
+        try {
+            $stm = $this-> dbCnx -> prepare("SELECT categoriasId,categorias_nombre FROM categorias WHERE categoriasId=:categoriasId");
+            $stm->bindParam(":categoriasId",$this->categoriasId);
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function ProveedorId(){
+        try {
+            $stm = $this-> dbCnx -> prepare("SELECT proveedorId,proveedor_nombre FROM proveedores WHERE proveedorId=:proveedorId");
+            $stm->bindParam(":proveedorId",$this->proveedorId);
+            $stm -> execute();
+            return $stm -> fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
+
+    public function obtenerProveedorId(){
         try {
             $stm = $this-> dbCnx -> prepare("SELECT proveedorId,proveedor_nombre FROM proveedores");
             $stm -> execute();
@@ -110,6 +132,18 @@ class Productos extends ConexiónPdo{
             return $e->getMessage();
         }
     }
+
+
+    // public function innerJoins(){
+    //     try {
+    //         $stm = $this-> dbCnx -> prepare("SELECT * FROM productos INNER JOIN categorias ON productos.productoId = categorias.categoriasId INNER JOIN proveedores ON productos.proveedorId = proveedores.proveedorId");
+    //         $stm -> execute();
+    //         return $stm -> fetchAll();
+    //     } catch (Exception $e) {
+    //         return $e->getMessage();
+    //     }
+    // }
+
 
     public function insertData(){
         try {

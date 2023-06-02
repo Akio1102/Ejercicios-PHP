@@ -41,6 +41,16 @@ class Login extends ConexiónPdo{
       $this->password = $password;
     }
 
+    public function obtenerEmpleadoId(){
+      try {
+        $stm = $this-> dbCnx -> prepare("SELECT empleadoId,empleado_nombre FROM empleados");
+        $stm -> execute();
+        return $stm -> fetchAll();
+      } catch (Exception $e) {
+        return $e->getMessage();
+      }
+    }
+
     public function fetchAll(){
       try {
         $stm = $this-> dbCnx -> prepare("SELECT * FROM users");
@@ -59,13 +69,14 @@ class Login extends ConexiónPdo{
         $stm->execute();
         $user = $stm -> fetchAll();
         if (count($user)>0) {
-            session_start();
-            $_SESSION["id"] = $user[0]["id"];
-            $_SESSION["email"] = $user[0]["email"];
-            $_SESSION["password"] = $user[0]["password"];
-            return true;
+          session_start();
+          $_SESSION["id"] = $user[0]["id"];
+          $_SESSION["email"] = $user[0]["email"];
+          $_SESSION["password"] = $user[0]["password"];
+          $_SESSION["username"] = $user[0]["username"];
+          return true;
         }else{
-            false;
+          false;
         }
       } catch (Exception $e) {
         return $e->getMessages();

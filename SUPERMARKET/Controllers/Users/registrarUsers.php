@@ -4,16 +4,22 @@ if (isset($_POST["registrarse"])) {
 
     $registrar = new Users();
 
-    $registrar->setId_Empleado(1);
+    $registrar->setId_Empleado($_POST["id_Empleado"]);
     $registrar->setEmail($_POST["email"]);
     $registrar->setUsername($_POST["username"]);
     $registrar->setPassword($_POST["password"]);
 
-    $registrar->insertData();
-
-    echo "
-    <script> alert('Los datos fueron guardados exitosamente');
-    document.location='../../Templates/Login.php'
-    </script>"; 
+    if ($registrar->checkUser($_POST["email"])) {
+        echo "
+        <script> alert('Usuario ya Existe, Logearse porfavor');
+        document.location='../../Templates/Index.php'
+        </script>"; 
+    }else{
+        $registrar->insertData();
+        echo "
+        <script> alert('Usuario Registrado Exitosamente');
+        document.location='../../Templates/Home.php'
+        </script>"; 
+    }
 }
 ?>

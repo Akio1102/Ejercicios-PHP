@@ -2,10 +2,20 @@
 require_once("../../Models/Productos.php");
 $data = new Productos();
 $id = $_GET["productoId"];
+$idCate = $_GET["categoriasId"];
+$idProve = $_GET["proveedorId"];
+
 $data->setProductoId($id);
+$data->setCategoriasId($idCate);
+$data->setProveedorId($idProve);
+
+$categoria = $data->CategoriasId();
+$proveedor = $data->ProveedorId();
+
+$idcategorias = $data->obtenerCategoriasId();
+$idproveedores = $data->obtenerProveedorId();
 
 $record = $data->selectOne();
-print_r($record);
 $val = $record[0];
 
 if (isset($_POST["editar"])) {
@@ -24,7 +34,6 @@ if (isset($_POST["editar"])) {
     document.location='../../Templates/Productos.php'
     </script>"; 
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -89,13 +98,19 @@ if (isset($_POST["editar"])) {
     </div>
 
     <div class="parte-media">
-        <h2 class="m-2">Empleados a Editar</h2>
+        <h2 class="m-2">Productos a Editar</h2>
       <div class="menuTabla contenedor2">
       <form class="col d-flex flex-wrap" action=""  method="post">
                            <div class="mb-1 col-12">
                 <label for="categoriasId" class="form-label">Categorias ID</label>
                 <select class="form-select" aria-label="Default select example" id="categoriasId" name="categoriasId" required>
-                  <option selected>Seleccione el id de la Categorias</option>
+                  <?php
+                    foreach($categoria as $key => $valor){
+                    ?> 
+                  <option  value="<?= $valor["categoriasId"]?>"><?= $valor["categorias_nombre"]?></option>
+                  <?php
+                    }
+                  ?>
                   <?php
                     foreach($idcategorias as $key => $valor){
                     ?> 
@@ -145,10 +160,16 @@ if (isset($_POST["editar"])) {
               <div class="mb-1 col-12">
                 <label for="proveedorId" class="form-label">Proveedor ID</label>
                 <select class="form-select" aria-label="Default select example" id="proveedorId" name="proveedorId" required>
-                  <option selected>Seleccione el id del Proveedor</option>
+                  <?php
+                    foreach($proveedor as $key => $valor){
+                    ?> 
+                    <option selected value="<?= $valor["proveedorId"]?>"><?= $valor["proveedor_nombre"]?></option>
+                  <?php
+                    }
+                  ?>
                   <?php
                     foreach($idproveedores as $key => $valor){
-                    ?> 
+                    ?>          
                   <option value="<?= $valor["proveedorId"]?>"><?= $valor["proveedor_nombre"]?></option>
                   <?php
                     }
@@ -171,7 +192,7 @@ if (isset($_POST["editar"])) {
               <div class="mb-1 col-12">
                 <label for="descontinuado" class="form-label">Descontinuado</label>
                 <select class="form-select" aria-label="Default select example" id="descontinuado" name="descontinuado" required>
-                  <option selected>Seleccione si esta Descontinuado o No</option>
+                  <option selected><?= $val["descontinuado"]?></option>
                   <option value="Descontinuado">Descontinuado</option>
                   <option value="No Descontinuado">No Descontinuado</option>
                 </select>
@@ -186,7 +207,7 @@ if (isset($_POST["editar"])) {
     </div>
 
     <div class="parte-derecho " id="detalles">
-      <h3>Detalle Proveedores</h3>
+      <h3>Detalle Productos</h3>
       <p>Cargando...</p>
        <!-- ///////Generando la grafica -->
 
