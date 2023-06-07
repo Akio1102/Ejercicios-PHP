@@ -16,6 +16,6 @@ $text = "Pepe";
 echo var_dump($text)."<br/>";
 
 // Valor Array
-$array = [];
+$array = ["Manzana","Pera","Banano"];
 echo var_dump($array)."<br/>";
 ?>
